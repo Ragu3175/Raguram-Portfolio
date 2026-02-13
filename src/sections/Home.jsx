@@ -27,7 +27,7 @@ export const Home = () => {
                         </p>
 
                         <p style={{ color: "var(--text-secondary)", fontSize: "1rem", marginBottom: "2.5rem" }}>
-                            📍 Chennai, India
+                            📍 Karur, India
                         </p>
 
                         <div style={{ display: "flex", gap: "1.5rem" }}>
