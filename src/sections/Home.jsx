@@ -46,8 +46,8 @@ export const Home = () => {
                             alt="Raguram R"
                             className="profile-pic"
                             style={{
-                                width: "clamp(250px, 35vw, 350px)",
-                                height: "clamp(250px, 35vw, 350px)",
+                                width: "clamp(180px, 40vw, 300px)",
+                                height: "clamp(180px, 40vw, 300px)",
                                 borderRadius: "1rem",
                                 objectFit: "cover",
                                 border: "3px solid var(--neon-blue)",
