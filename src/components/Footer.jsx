@@ -30,7 +30,7 @@ export const Footer = () => {
                 </div>
 
                 <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}>
-                    &copy; {new Date().getFullYear()} Raguram R. Electronics and Communication Engineer.
+                    &copy; {new Date().getFullYear()} Raguram R.
                 </p>
             </div>
         </footer>
