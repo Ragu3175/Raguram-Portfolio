@@ -10,14 +10,14 @@ export const About = () => {
                     </h2>
 
                     <div className="glass" style={{ padding: "2.5rem", textAlign: "center" }}>
-                        <p style={{ color: "var(--text-primary)", fontSize: "1.125rem", lineHeight: "1.8" }}>
-                            I am a dedicated Full Stack Developer with a passion for building
-                            high-performance web applications. I specialize in the MERN stack
-                            (MongoDB, Express, React, Node.js) and have a strong interest in
-                            real-time communication systems using Socket.io. I focus on writing
-                            clean, scalable code and delivering intuitive user experiences
-                            that solve real-world problems.
-                        </p>
+                        <div style={{ color: "var(--text-primary)", fontSize: "1.125rem", lineHeight: "1.8", textAlign: "left" }}>
+                            <p style={{ marginBottom: "1.5rem" }}>
+                                I am a dedicated Software Engineer passionate about designing and building scalable, high-performance applications. I focus on writing clean, maintainable, and efficient code while developing reliable systems that solve real-world problems.
+                            </p>
+                            <p>
+                                With a strong foundation in problem-solving and system thinking, I aim to create structured, well-architected solutions that are both robust and adaptable. I continuously strive to improve performance, optimize system design, and deliver software that provides meaningful impact and long-term value.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </RevealOnScroll>

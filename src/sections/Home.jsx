@@ -18,12 +18,11 @@ export const Home = () => {
                         </h1>
 
                         <h2 style={{ fontSize: "1.5rem", color: "var(--text-primary)", marginBottom: "1rem", fontWeight: "600" }}>
-                            Full Stack Developer
+                            Software Engineer | Scalable Systems | Clean Architecture
                         </h2>
 
                         <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", marginBottom: "2.5rem", maxWidth: "500px", lineHeight: "1.6" }}>
-                            I am a dedicated developer focused on building high-performance web applications.
-                            I specialize in the MERN stack and real-time communication systems.
+                            I build reliable, high-performance software solutions with a focus on scalability, system design, and clean code principles.
                         </p>
 
                         <p style={{ color: "var(--text-secondary)", fontSize: "1rem", marginBottom: "2.5rem" }}>

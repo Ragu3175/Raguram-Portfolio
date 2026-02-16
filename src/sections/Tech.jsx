@@ -8,7 +8,7 @@ export const Tech = () => {
         },
         {
             title: "Backend",
-            skills: ["Node.js", "Express.js", "RESTful API Development", "JWT Authentication & Authorization"]
+            skills: ["Node.js", "Express.js", "System Design", "Architecture", "Scalable API Design", "RESTful API Development", "JWT Authentication & Authorization"]
         },
         {
             title: "Databases",
