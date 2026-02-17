@@ -9,22 +9,44 @@ export const Footer = () => {
         const key = "page-views";
         const sessionKey = "has-visited-session";
 
-        if (!sessionStorage.getItem(sessionKey)) {
-            // First time in this session - increment the count
-            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
-                .then(res => res.json())
-                .then(data => {
+        const fetchWithRetry = async (url) => {
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
+                const res = await fetch(url, { signal: controller.signal });
+                clearTimeout(timeoutId);
+
+                if (!res.ok) throw new Error("Network response not ok");
+                return await res.json();
+            } catch (err) {
+                console.error("Counter fetch failed:", err);
+                return null;
+            }
+        };
+
+        const updateCounter = async () => {
+            if (!sessionStorage.getItem(sessionKey)) {
+                // Increment visit
+                const data = await fetchWithRetry(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+                if (data) {
                     setViews(data.count);
                     sessionStorage.setItem(sessionKey, "true");
-                })
-                .catch(err => console.error("Counter error:", err));
-        } else {
-            // Already visited in this session - just fetch current count without incrementing
-            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/get`)
-                .then(res => res.json())
-                .then(data => setViews(data.count))
-                .catch(err => console.error("Counter error:", err));
-        }
+                } else {
+                    setViews("Active"); // Fallback if blocked
+                }
+            } else {
+                // Just fetch count
+                const data = await fetchWithRetry(`https://api.counterapi.dev/v1/${namespace}/${key}/get`);
+                if (data) {
+                    setViews(data.count);
+                } else {
+                    setViews("Active"); // Fallback if blocked
+                }
+            }
+        };
+
+        updateCounter();
     }, []);
 
     return (
