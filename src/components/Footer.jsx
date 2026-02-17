@@ -5,15 +5,26 @@ export const Footer = () => {
     const [views, setViews] = useState(null);
 
     useEffect(() => {
-        // Use a simple free counter API
-        // Namespace could be the portfolio owner's name to avoid collisions
         const namespace = "raguram-portfolio";
         const key = "page-views";
+        const sessionKey = "has-visited-session";
 
-        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
-            .then(res => res.json())
-            .then(data => setViews(data.count))
-            .catch(err => console.error("Counter error:", err));
+        if (!sessionStorage.getItem(sessionKey)) {
+            // First time in this session - increment the count
+            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+                .then(res => res.json())
+                .then(data => {
+                    setViews(data.count);
+                    sessionStorage.setItem(sessionKey, "true");
+                })
+                .catch(err => console.error("Counter error:", err));
+        } else {
+            // Already visited in this session - just fetch current count without incrementing
+            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/get`)
+                .then(res => res.json())
+                .then(data => setViews(data.count))
+                .catch(err => console.error("Counter error:", err));
+        }
     }, []);
 
     return (
